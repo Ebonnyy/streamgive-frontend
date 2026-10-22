@@ -142,9 +142,10 @@ export function ToastProvider({
   // Timers must not outlive the provider — nothing is left to call
   // dismissToast once this unmounts.
   useEffect(() => {
+    const map = timers.current;
     return () => {
-      timers.current.forEach((timer) => clearTimeout(timer));
-      timers.current.clear();
+      map.forEach((timer) => clearTimeout(timer));
+      map.clear();
     };
   }, []);
 

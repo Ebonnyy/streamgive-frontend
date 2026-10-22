@@ -33,6 +33,9 @@ export function Header() {
 
   useEffect(() => {
     if (!address) {
+      // A disconnected wallet must not keep showing the NGO Admin link from
+      // a previous session's lookup.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOwnsNgo(false);
       return;
     }
